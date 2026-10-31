@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Books For All
 
 Digital library: **FastAPI + PostgreSQL + SQLAlchemy** backend, plain HTML/CSS/JS frontend.
@@ -42,3 +43,7 @@ Change them in `backend/config.py` (`ISSUE_PLANS`, `LATE_FEE_PER_DAY`); the webs
 ## Notes
 - Passwords are hashed with bcrypt. Login uses JWT tokens (valid 24 h). Logout clears the token in the browser.
 - If you created tables with an older version of the models, drop them once so they are recreated.
+=======
+# books-for-all
+e-library platform. create account, explore books, issue for selected time period or add to wishlist
+>>>>>>> 076527f633e6a495346b96aaebe6aa6c5843e521
