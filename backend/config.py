@@ -35,6 +35,12 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
+# find the website folder whether it sits next to backend or inside it
+# if not Path(settings.FRONTEND_DIR).is_dir():
+#     for candidate in (BASE_DIR / "frontend", BASE_DIR.parent / "frontend"):
+#         if candidate.is_dir():
+#             settings.FRONTEND_DIR = str(candidate)
+#             break
 
 # ---- Library rules (single source of truth, also sent to the frontend) ----
 

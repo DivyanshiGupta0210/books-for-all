@@ -35,6 +35,9 @@ COVER_FILES = {
     1061: "around the world in 80 days.png",
     1062: "harry potter and the half-blood prince.png",
     1063: "harry potter and the prosoner of azkaban.png",
+    2101: "lost treasure of the emerald eye.png",
+    2102: "the curse of the cheese pyramid.png",
+    2103: "watch your whiskers, stilton.png",
 }
 
 

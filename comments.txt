@@ -1,0 +1,25 @@
+updates via db - schma, books for all right click, query tool
+run query - write and click on play button
+
+change or add cover url
+UPDATE books SET has_cover = true, cover_url = 'assets/images/lost treasure of the emerald eye.png' WHERE book_id = 2101;
+
+Add a book to Featured Books
+UPDATE books SET is_featured = true WHERE book_id = 2045;
+
+Add a book to New Arrivals
+UPDATE books SET is_new_arrival = true WHERE book_id = 2045;
+
+Both at once, for several books
+UPDATE books SET is_featured = true, is_new_arrival = true WHERE book_id IN (2045, 2002, 2001);
+
+Remove a book from a section
+UPDATE books SET is_featured = false WHERE book_id = 2045;
+UPDATE books SET is_new_arrival = false WHERE book_id = 2045;
+
+Pick by title instead of ID
+UPDATE books SET is_featured = true WHERE title = 'Devdas';
+
+See what’s in each section now
+SELECT book_id, title FROM books WHERE is_featured = true;
+SELECT book_id, title FROM books WHERE is_new_arrival = true;
