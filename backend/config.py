@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24
 
     # Folder the API serves at "/" (the website itself)
-    FRONTEND_DIR: str = str(BASE_DIR / "frontend")
+    FRONTEND_DIR: str = str(BASE_DIR.parent / "frontend")
 
     model_config = SettingsConfigDict(
         env_file=BASE_DIR / ".env",
