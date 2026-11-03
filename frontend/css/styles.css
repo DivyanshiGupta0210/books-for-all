@@ -225,7 +225,32 @@ input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; a
 /* search + filters */
 .search-row { margin-bottom: 18px; }
 .filters { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-.filters .select { width: 200px; }
+.filters .reset-btn { height: 48px; padding: 0 22px; gap: 8px; }
+.filters .reset-btn:disabled { opacity: 0.45; cursor: default; }
+
+/* custom dropdowns */
+.dd { position: relative; width: 200px; }
+.dd-btn {
+  width: 100%; height: 48px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  background: var(--white); border: 1.5px solid var(--g300); border-radius: var(--radius);
+  cursor: pointer; text-align: left; color: var(--g500);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.dd.has-value .dd-btn { color: var(--black); }
+.dd-btn:hover { border-color: var(--g500); }
+.dd-btn:focus-visible, .dd.open .dd-btn { outline: none; border-color: var(--black); box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08); }
+.dd-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dd-caret { flex: none; color: var(--black); transition: transform 0.2s ease; }
+.dd.open .dd-caret { transform: rotate(180deg); }
+.dd-menu {
+  position: absolute; z-index: 30; top: calc(100% + 6px); left: 0; right: 0; min-width: 100%;
+  max-height: 260px; overflow-y: auto; list-style: none; margin: 0; padding: 6px;
+  background: var(--white); border: 1px solid var(--g200); border-radius: var(--radius); box-shadow: var(--shadow);
+  scrollbar-width: thin; scrollbar-color: var(--g300) transparent;
+}
+.dd-item { padding: 10px 12px; border-radius: 6px; font-size: 15px; cursor: pointer; }
+.dd-item:hover, .dd-item.active { background: var(--g100); }
+.dd-item.selected { font-weight: 600; background: var(--g100); }
 .link-btn { background: none; border: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; font-size: 15px; }
 .link-btn:hover { color: var(--g600); }
 
@@ -374,4 +399,14 @@ input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; a
 @media print {
   .navbar, .footer, .receipt-actions, .toast-host { display: none !important; }
   .receipt-card { border-color: #000; }
+}
+
+/* phones: dropdowns in a tidy 2-column grid, menus wide enough for long names */
+@media (max-width: 640px) {
+  .filters { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .dd { width: 100%; }
+  .dd:nth-child(even) .dd-menu { left: auto; right: 0; }
+  .dd-menu { min-width: 230px; max-width: calc(100vw - 2 * var(--pad)); max-height: 50vh; }
+  .dd-item { padding: 13px 12px; }
+  .filters .reset-btn { width: 100%; padding: 0 12px; }
 }

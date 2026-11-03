@@ -26,10 +26,13 @@
     </div>
 
     <div class="filters">
-      <select class="select" id="genreFilter" aria-label="Genre"><option value="">Genre</option></select>
-      <select class="select" id="typeFilter" aria-label="Book Type"><option value="">Book Type</option></select>
-      <select class="select" id="languageFilter" aria-label="Language"><option value="">Language</option></select>
-      <button type="button" class="link-btn" id="clearFilters" hidden>Clear all</button>
+      <div class="dd" id="genreFilter" data-label="Genre"></div>
+      <div class="dd" id="typeFilter" data-label="Book Type"></div>
+      <div class="dd" id="languageFilter" data-label="Language"></div>
+      <button type="button" class="btn btn-outline btn-sm reset-btn" id="clearFilters" disabled>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+        Reset
+      </button>
     </div>
 
     <div id="browse">
