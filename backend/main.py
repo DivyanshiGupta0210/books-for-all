@@ -2,8 +2,14 @@
 #
 # Run from the backend folder:   uvicorn main:app --reload
 # Then open:                     http://127.0.0.1:8000
+import os
+import sys
 from contextlib import asynccontextmanager
 from pathlib import Path
+
+# Make the flat imports below (config, database, routers...) work no matter
+# where the app is started from (local uvicorn OR Vercel's "backend.main:app").
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -18,8 +24,11 @@ from seed_books import seed_books
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    Base.metadata.create_all(bind=engine)  # create tables if missing
-    seed_books()  # load data/books.json if the books are not there yet
+    # On Vercel every cold start would redo this, so do it once from your PC
+    # instead (see README). Locally it still runs automatically.
+    if not os.environ.get("VERCEL"):
+        Base.metadata.create_all(bind=engine)  # create tables if missing
+        seed_books()  # load data/books.json if the books are not there yet
     yield
 
 
